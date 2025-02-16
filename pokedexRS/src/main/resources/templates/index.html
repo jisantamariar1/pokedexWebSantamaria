@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pokédex</title>
+
+    <!-- Enlace al archivo CSS que contiene los estilos de la página -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<!-- Título principal de la página -->
+<h1>Pokédex</h1>
+
+<!-- Formulario de búsqueda y filtros -->
+<form action="/" method="get" class="search-form">
+
+    <!-- Barra de búsqueda con campo de texto y botones -->
+    <div class="search-bar">
+        <!-- Input para ingresar el nombre o ID del Pokémon -->
+        <input type="text" name="search" placeholder="Ingrese nombre o ID" th:value="${search}">
+
+        <!-- Botón para realizar la búsqueda -->
+        <button type="submit">Buscar</button>
+
+        <!-- Enlace que limpia el campo de búsqueda llamando a una función de JavaScript -->
+        <a href="javascript:void(0);" class="clear-link" onclick="clearSearch()">Limpiar</a>
+    </div>
+
+    <!-- Sección de filtros con desplegables -->
+    <div class="filters">
+
+        <!-- Desplegable para filtrar por generación -->
+        <select name="generation" id="generation" onchange="this.form.submit()">
+            <option value="">Seleccione Generación</option>
+            <!-- Se itera sobre la lista de generaciones obtenida del modelo -->
+            <option th:each="generation : ${generations}"
+                    th:value="${generation.id}"
+                    th:text="${generation.name}"
+                    th:selected="${generation.id == selectedGeneration}">
+            </option>
+        </select>
+
+        <!-- Desplegable para filtrar por tipo de Pokémon -->
+        <select name="type" id="type" onchange="this.form.submit()">
+            <option value="">Seleccione Tipo</option>
+            <!-- Se itera sobre la lista de tipos de Pokémon obtenida del modelo -->
+            <option th:each="t : ${types}"
+                    th:value="${t}"
+                    th:text="${t}"
+                    th:selected="${t == selectedType}">
+            </option>
+        </select>
+
+        <!-- Desplegable para filtrar por hábitat del Pokémon -->
+        <select name="habitat" id="habitat" onchange="this.form.submit()">
+            <option value="">Seleccione Hábitat</option>
+            <!-- Se itera sobre la lista de hábitats obtenida del modelo -->
+            <option th:each="habitat : ${habitats}"
+                    th:value="${habitat.id}"
+                    th:text="${habitat.name}"
+                    th:selected="${habitat.id == selectedHabitat}">
+            </option>
+        </select>
+
+        <!-- Desplegable para filtrar por especie de Pokémon -->
+        <select name="species" id="species" onchange="this.form.submit()">
+            <option value="">Seleccione Especie</option>
+            <!-- Se itera sobre la lista de especies obtenida del modelo -->
+            <option th:each="species : ${species}"
+                    th:value="${species.id}"
+                    th:text="${species.name}"
+                    th:selected="${species.id == selectedSpecies}">
+            </option>
+        </select>
+
+    </div>
+</form>
+
+<!-- Línea divisoria entre los filtros y la tabla de resultados -->
+<hr>
+
+<!-- Tabla que muestra la lista de Pokémon encontrados -->
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Altura</th>
+        <th>Peso</th>
+        <th>Sprite</th>
+        <th>Ver Detalles</th>
+    </tr>
+
+    <!-- Se itera sobre la lista de Pokémon obtenida del modelo y se llena la tabla -->
+    <tr th:each="pokemon : ${pokemonList}">
+        <td th:text="${pokemon.id}"></td> <!-- ID del Pokémon -->
+        <td th:text="${pokemon.name}"></td> <!-- Nombre del Pokémon -->
+        <td th:text="${pokemon.height}"></td> <!-- Altura del Pokémon -->
+        <td th:text="${pokemon.weight}"></td> <!-- Peso del Pokémon -->
+
+        <!-- Imagen (sprite) del Pokémon -->
+        <td><img th:src="${pokemon.spriteUrl}" alt="Sprite"></td>
+
+        <!-- Enlace que lleva a la página de detalles del Pokémon -->
+        <td><a th:href="@{/pokemon(name=${pokemon.name})}">Ver</a></td>
+    </tr>
+</table>
+
+<!-- Mensaje que se muestra si la lista de Pokémon está vacía -->
+<p th:if="${pokemonList.isEmpty()}">No se encontró ningún Pokémon con esos criterios.</p>
+
+<!-- Enlace al archivo JavaScript que maneja interacciones en la página -->
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>

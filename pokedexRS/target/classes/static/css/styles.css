@@ -1,0 +1,119 @@
+/* ---------------------- ESTILOS GENERALES ---------------------- */
+
+/* Aplica un estilo básico al cuerpo de la página */
+body {
+    font-family: Arial, sans-serif; /* Usa una fuente estándar y legible */
+    text-align: center; /* Centra todo el contenido */
+}
+
+/* ---------------------- TABLA DE POKÉMON ---------------------- */
+
+/* Estiliza la tabla donde se muestra la lista de Pokémon */
+table {
+    width: 80%; /* La tabla ocupa el 80% del ancho de la página */
+    margin: auto; /* Centra la tabla horizontalmente */
+    border-collapse: collapse; /* Evita espacios entre los bordes de las celdas */
+}
+
+/* Estiliza los encabezados de la tabla */
+th {
+    border: 1px solid black; /* Borde negro para separar columnas */
+    padding: 8px; /* Espaciado interno */
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Texto en blanco */
+    font-weight: bold; /* Letras en negrita */
+}
+
+/* Estiliza las celdas del cuerpo de la tabla */
+td {
+    border: 1px solid black; /* Borde negro */
+    padding: 8px; /* Espaciado interno */
+}
+
+/* Ajusta el tamaño de las imágenes en la tabla */
+img {
+    width: 80px; /* Reduce el tamaño de las imágenes */
+}
+
+/* ---------------------- FORMULARIO DE BÚSQUEDA ---------------------- */
+
+/* Alinea el formulario al centro y coloca los elementos en columna */
+form {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos en el eje horizontal */
+    margin-bottom: 20px; /* Espacio entre el formulario y la tabla */
+}
+
+/* Contenedor de la barra de búsqueda */
+.search-bar {
+    display: flex; /* Coloca los elementos en una fila */
+    gap: 10px; /* Espaciado entre los elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-bottom: 10px; /* Espacio entre los botones y los filtros */
+}
+
+/* Estilo para el campo de entrada de texto */
+form input {
+    padding: 8px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 200px; /* Ancho fijo */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris */
+}
+
+/* ---------------------- BOTONES ---------------------- */
+
+/* Estilo para el botón de búsqueda */
+form button {
+    padding: 8px 16px; /* Espaciado interno */
+    background-color: #4CAF50; /* Color verde */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor en forma de mano */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Efecto hover para el botón */
+form button:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+}
+
+/* ---------------------- ENLACE "LIMPIAR" ---------------------- */
+
+/* Estilo para el enlace que limpia la búsqueda */
+.clear-link {
+    display: inline-block; /* Hace que el enlace tenga apariencia de botón */
+    padding: 8px 16px; /* Espaciado interno */
+    background-color: #f1f1f1; /* Color de fondo gris claro */
+    text-decoration: none; /* Elimina el subrayado */
+    border: 1px solid #ddd; /* Borde gris */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor en forma de mano */
+}
+
+/* Efecto hover para el enlace */
+.clear-link:hover {
+    background-color: #e0e0e0; /* Color más oscuro al pasar el mouse */
+}
+
+/* ---------------------- FILTROS ---------------------- */
+
+/* Contenedor de los filtros */
+.filters {
+    display: flex;
+    flex-direction: row; /* Alinea los filtros en una fila */
+    gap: 10px; /* Espaciado entre los filtros */
+    justify-content: center; /* Centra los filtros horizontalmente */
+    margin-top: 10px; /* Espacio entre la barra de búsqueda y los filtros */
+}
+
+/* Estilo para los desplegables (select) */
+.filters select {
+    padding: 8px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris */
+}

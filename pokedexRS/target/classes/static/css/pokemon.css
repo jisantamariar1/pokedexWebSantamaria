@@ -1,0 +1,166 @@
+/* ---------------------- RESET BÁSICO ---------------------- */
+
+/* Restablece márgenes y padding predeterminados para todos los elementos */
+* {
+    box-sizing: border-box; /* Hace que el tamaño total incluya padding y bordes */
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------------- ESTILOS GENERALES ---------------------- */
+
+/* Estilo base del body */
+body {
+    font-family: Arial, sans-serif; /* Fuente legible y estándar */
+    background: #f9f9f9; /* Color de fondo suave */
+    padding: 20px;
+    max-width: 1200px; /* Define un ancho máximo para evitar que el contenido sea demasiado ancho en pantallas grandes */
+    margin: auto; /* Centra el contenido horizontalmente */
+    display: grid;
+    grid-template-rows: auto 1fr; /* El encabezado tiene altura automática, el contenido ocupa el resto */
+    gap: 20px; /* Espacio entre el encabezado y el contenido principal */
+}
+
+/* ---------------------- ENCABEZADO ---------------------- */
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.pokemon-id {
+    font-size: 1.2em;
+    color: #666; /* Texto gris para un estilo más sutil */
+}
+
+/* ---------------------- CONTENEDOR PRINCIPAL ---------------------- */
+
+/* Usa un layout de dos columnas */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas del mismo tamaño */
+    gap: 20px; /* Espacio entre columnas */
+}
+
+/* ---------------------- COLUMNA IZQUIERDA: INFORMACIÓN ---------------------- */
+
+.info-column {
+    background: #fff; /* Fondo blanco para destacar la información */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sección de descripción */
+.description {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+/* Sección de tipos */
+.types-section {
+    margin-bottom: 15px;
+}
+
+.types-section strong {
+    display: block; /* Hace que el título de la sección ocupe toda la línea */
+    margin-bottom: 5px;
+}
+
+/* Iconos de los tipos */
+.type-icon-large {
+    width: 125px; /* Tamaño más grande para destacar */
+    height: auto;
+    margin-right: 8px;
+}
+
+/* Línea de estadísticas */
+.stats-line {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+/* Sección de habilidades */
+.abilities {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+/* ---------------------- ENLACE "VOLVER" ---------------------- */
+
+.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Verde brillante */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-top: 20px; /* Agrega espacio superior */
+    text-align: center;
+    width: auto; /* Se ajusta al contenido */
+    max-width: 250px; /* Máximo ancho */
+    margin-left: auto; /* Centrado */
+    margin-right: auto; /* Centrado */
+}
+
+/* Efecto hover para el botón */
+.back-link:hover {
+    background-color: #45a049;
+}
+
+/* ---------------------- COLUMNA DERECHA: IMAGEN Y GRÁFICO ---------------------- */
+
+.image-chart-column {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Imagen del Pokémon */
+.image-column {
+    text-align: center;
+}
+
+.pokemon-image {
+    width: 250px; /* Tamaño ajustado */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* ---------------------- GRÁFICO DE BARRAS ---------------------- */
+
+canvas {
+    width: 100% !important; /* Asegura que el gráfico se ajuste al contenedor */
+    max-width: 500px;
+    height: 300px !important;
+    border: 1px solid #ccc;
+}
+
+/* ---------------------- RESPONSIVE DESIGN ---------------------- */
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr; /* En pantallas pequeñas, las columnas se apilan */
+    }
+}
+
+/* ---------------------- ESPACIADO ENTRE SECCIONES ---------------------- */
+
+/* Separa las secciones de generación, hábitat, especie y "volver a la Pokédex" */
+.info-column p {
+    margin-bottom: 20px;
+}

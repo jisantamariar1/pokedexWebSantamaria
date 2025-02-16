@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Detalles del Pokémon</title>
+
+  <!-- Enlace al archivo CSS para los estilos de la página -->
+  <link rel="stylesheet" href="/css/pokemon.css">
+
+  <!-- Incluir Chart.js desde un CDN para generar gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Encabezado que muestra el nombre y el ID del Pokémon -->
+<header>
+  <!-- Nombre del Pokémon obtenido desde el modelo en Thymeleaf -->
+  <h1 th:text="${pokemon.name}"></h1>
+
+  <!-- ID del Pokémon mostrado en formato #<id> -->
+  <span class="pokemon-id">#<span th:text="${pokemon.id}"></span></span>
+</header>
+
+<!-- Contenedor principal que divide la página en dos columnas -->
+<main>
+
+  <!-- Columna izquierda: Contiene información textual del Pokémon -->
+  <div class="info-column">
+
+    <!-- Sección de descripción del Pokémon -->
+    <p class="description">
+      <strong>Descripción:</strong>
+      <!-- Muestra la descripción del Pokémon -->
+      <span th:text="${pokemon.description}"></span>
+    </p>
+
+    <!-- Sección que muestra los tipos del Pokémon con imágenes -->
+    <div class="types-section">
+      <strong>Tipo:</strong>
+      <!-- Itera sobre la lista de URLs de los íconos de los tipos y los muestra como imágenes -->
+      <span th:each="typeUrl : ${pokemon.typeSpriteUrls}">
+        <img class="type-icon-large" th:src="${typeUrl}" alt="Tipo">
+      </span>
+    </div>
+
+    <!-- Altura y peso del Pokémon en la misma línea -->
+    <div class="stats-line">
+      <span><strong>Altura:</strong> <span th:text="${pokemon.height}"></span></span>
+      <span><strong>Peso:</strong> <span th:text="${pokemon.weight}"></span></span>
+    </div>
+
+    <!-- Habilidades del Pokémon mostradas como una lista separada por comas -->
+    <p class="abilities">
+      <strong>Habilidades:</strong>
+      <!-- Convierte la lista de habilidades en un string separado por comas -->
+      <span th:text="${#strings.arrayJoin(pokemon.abilities.toArray(), ', ')}"></span>
+    </p>
+
+    <!-- Resto de la información del Pokémon -->
+    <p><strong>Generación:</strong> <span th:text="${pokemon.generation}"></span></p>
+    <p><strong>Hábitat:</strong> <span th:text="${pokemon.habitat}"></span></p>
+    <p><strong>Especie:</strong> <span th:text="${pokemon.species}"></span></p>
+
+    <!-- Enlace para regresar a la lista de la Pokédex -->
+    <a class="back-link" href="/">Volver a la Pokédex</a>
+  </div>
+
+  <!-- Columna derecha: Contiene la imagen del Pokémon y el gráfico de estadísticas -->
+  <div class="image-chart-column">
+
+    <!-- Sección para la imagen del Pokémon -->
+    <div class="image-column">
+      <img class="pokemon-image" th:src="${pokemon.spriteUrl}" alt="Sprite">
+    </div>
+
+    <!-- Canvas donde se generará el gráfico de estadísticas con Chart.js -->
+    <canvas id="statsChart"></canvas>
+  </div>
+</main>
+
+<!-- Script para pasar las estadísticas del Pokémon a una variable global en JavaScript -->
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  window.pokemonStats = {
+    hp: [[${pokemon.hp}]],
+    attack: [[${pokemon.attack}]],
+    defense: [[${pokemon.defense}]],
+    specialAttack: [[${pokemon.specialAttack}]],
+    specialDefense: [[${pokemon.specialDefense}]],
+    speed: [[${pokemon.speed}]]
+  };
+  /*]]>*/
+</script>
+
+<!-- Archivo JavaScript que se encargará de manejar la lógica de la página, como el gráfico -->
+<script src="/js/pokemon.js"></script>
+
+</body>
+</html>
