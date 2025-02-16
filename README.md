@@ -34,4 +34,4 @@
     - La primera vez que ejecutes el programa, los datos se cargarán automáticamente en la base de datos.
     
 2. **Para ver el contenido**:
-    - ingrese a http://localhost:8080/
+    - una vez cargado ingrese a http://localhost:8080/
